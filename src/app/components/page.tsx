@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 type ShowcaseItem = {
-  id: "button" | "navbar" | "scroll-stack-cards";
+  id: "button" | "navbar" | "scroll-stack-cards" | "dropdown";
   label: string;
   title: string;
   description: string;
@@ -77,12 +77,25 @@ export function ScrollStackCardsDemo() {
   );
 }`,
   },
+  {
+    id: "dropdown",
+    label: "Dropdown",
+    title: "Dropdown Component",
+    description:
+      "A reusable profile dropdown with click-away handling, smooth transitions, and configurable identity details.",
+    snippet: `import { ProfileDropdown } from "@/components/ui/profile-dropdown";
+
+export function DropdownDemo() {
+  return <ProfileDropdown name="Jane Doe" email="janedoe@exampl.com" />;
+}`,
+  },
 ];
 
 const demoByRoute: Record<ShowcaseItem["id"], { path: string; minHeight: number }> = {
   button: { path: "/components/button", minHeight: 360 },
   navbar: { path: "/components/navbar", minHeight: 260 },
   "scroll-stack-cards": { path: "/components/scroll-stack-cards", minHeight: 900 },
+  dropdown: { path: "/components/dropdown", minHeight: 520 },
 };
 
 function renderDemo(id: ShowcaseItem["id"]) {
